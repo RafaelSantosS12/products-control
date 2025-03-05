@@ -73,4 +73,3 @@ const deleteProduct = (nomeProd) => {
     }
     
 }
-
