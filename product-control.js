@@ -36,10 +36,15 @@ const diminuirQuantidade = (nomeProd, qtd) => {
     }
 }
 
+const exibirProduto = (nomeProd) => {
+    const product = produtos.find(produto => produto.nome === nomeProd);
+    console.log(`Produto: ${product.nome} \nPreço: ${product.preco}\nCategoria: ${product.categoria}\nQuantidade: ${product.qtd}\n`);
+}
+
 const listarProdutos = (produtos) => {
     console.log('----- LISTA DE PRODUTOS -----');
     produtos.forEach((produto) => {
-        console.log(`Produto: ${produto.nome} \nPreço: ${produto.preco}\nCategoria: ${produto.categoria}\nQuantidade: ${produto.qtd}\n`);
+        exibirProduto(produto.nome);
     });
     console.log('-----------------------------');
 }
@@ -78,4 +83,3 @@ const deleteProduct = (nomeProd) => {
     }
     
 }
-
