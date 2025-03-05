@@ -1,19 +1,20 @@
 // Exercicio 1 - Manipulação de Arrays
 
-let produtos = [{nome: 'Camisa', preco: 70, categoria: "Roupas"}];
+let produtos = [{nome: 'Camisa', preco: 70, categoria: "Roupas", qtd: 20}];
 
-const adicionarProduto = (nomeProd, precoProd, categoriaProd) => {
+const adicionarProduto = (nomeProd, precoProd, categoriaProd, qtdProd) => {
     produtos.push({
         nome: nomeProd,
         preco: precoProd,
-        categoria: categoriaProd
+        categoria: categoriaProd,
+        qtd: qtdProd
     });
 }
 
 const listarProdutos = (produtos) => {
     console.log('----- LISTA DE PRODUTOS -----');
     produtos.forEach((produto) => {
-        console.log(`Produto: ${produto.nome} \nPreço: ${produto.preco}\nCategoria: ${produto.categoria}\n`);
+        console.log(`Produto: ${produto.nome} \nPreço: ${produto.preco}\nCategoria: ${produto.categoria}\nQuantidade: ${produto.qtd}\n`);
     });
     console.log('-----------------------------');
 }
@@ -52,12 +53,4 @@ const deleteProduct = (nomeProd) => {
     }
     
 }
-
-
-adicionarProduto("Tênis", 120, "Roupas");
-adicionarProduto("Short", 60, "Roupas");
-adicionarProduto("Bola", 80, "Esportes");
-adicionarProduto("Carteira", 35, "Acessórios");
-adicionarProduto("Chuteira", 150, "Esportes");
-deleteProduct("Bola");
 
