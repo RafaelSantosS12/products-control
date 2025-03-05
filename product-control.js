@@ -11,6 +11,11 @@ const adicionarProduto = (nomeProd, precoProd, categoriaProd, qtdProd) => {
     });
 }
 
+const buscarProduct = (nomeProd) => {
+    product = produtos.find(produto => produto.nome === nomeProd);
+    console.log(`Produto: ${product.nome} \nPreço: ${product.preco}\nCategoria: ${product.categoria}\nQuantidade: ${product.qtd}\n`);
+}
+
 const aumentarQuantidade = (nomeProd, qtd) => {
     product = produtos.find(produto => produto.nome === nomeProd);
     if(product){
@@ -73,3 +78,4 @@ const deleteProduct = (nomeProd) => {
     }
     
 }
+
