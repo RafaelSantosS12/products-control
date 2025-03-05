@@ -11,6 +11,26 @@ const adicionarProduto = (nomeProd, precoProd, categoriaProd, qtdProd) => {
     });
 }
 
+const aumentarQuantidade = (nomeProd, qtd) => {
+    product = produtos.find(produto => produto.nome === nomeProd);
+    if(product){
+        product.qtd += qtd;
+        console.log("Quantidade atualizada!");
+    }else{
+        console.log("Produto não encontrado!");
+    }
+}
+
+const diminuirQuantidade = (nomeProd, qtd) => {
+    product = produtos.find(produto => produto.nome === nomeProd);
+    if(product){
+        product.qtd -= qtd;
+        console.log("Quantidade atualizada!");
+    }else{
+        console.log("Produto não encontrado!");
+    }
+}
+
 const listarProdutos = (produtos) => {
     console.log('----- LISTA DE PRODUTOS -----');
     produtos.forEach((produto) => {
@@ -53,4 +73,8 @@ const deleteProduct = (nomeProd) => {
     }
     
 }
+
+aumentarQuantidade("Camisa", 20);
+diminuirQuantidade("Camisa", 12)
+listarProdutos(produtos);
 
