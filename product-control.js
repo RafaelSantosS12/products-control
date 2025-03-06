@@ -83,3 +83,17 @@ const deleteProduct = (nomeProd) => {
     }
     
 }
+
+const somarValores = () => {
+    let valorTotal = 0;
+    produtos.forEach((produto) => {
+        let valorInd = 0;
+        valorInd = produto.preco * produto.qtd;
+        valorTotal += produto.preco * produto.qtd;
+        exibirProduto(produto.nome);
+        console.log(`Valor total do produto: ${valorInd}\n`);
+    });
+    console.log(`Valor total de todos os produtos: R$${valorTotal}`);
+}
+
+somarValores();
