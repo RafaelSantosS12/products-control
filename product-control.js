@@ -11,9 +11,21 @@ const adicionarProduto = (nomeProd, precoProd, categoriaProd, qtdProd) => {
     });
 }
 
+const atualizarProduto = (nomeProd, atributo, valorAtribuir) => {
+    product = produtos.find(produto => produto.nome === nomeProd);
+    product[atributo] = valorAtribuir;
+    console.log("Produto atualizado!");
+    exibirProduto(product.nome);
+}
+
 const buscarProduct = (nomeProd) => {
     product = produtos.find(produto => produto.nome === nomeProd);
-    console.log(`Produto: ${product.nome} \nPreço: ${product.preco}\nCategoria: ${product.categoria}\nQuantidade: ${product.qtd}\n`);
+
+    if(product) {
+        console.log(`Produto: ${product.nome} \nPreço: ${product.preco}\nCategoria: ${product.categoria}\nQuantidade: ${product.qtd}\n`);
+    } else{
+        console.log("Produto não encontrado!");
+    }
 }
 
 const aumentarQuantidade = (nomeProd, qtd) => {
@@ -87,13 +99,10 @@ const deleteProduct = (nomeProd) => {
 const somarValores = () => {
     let valorTotal = 0;
     produtos.forEach((produto) => {
-        let valorInd = 0;
-        valorInd = produto.preco * produto.qtd;
-        valorTotal += produto.preco * produto.qtd;
+        let valorInd = produto.preco * produto.qtd;
+        valorTotal += valorInd;
         exibirProduto(produto.nome);
         console.log(`Valor total do produto: ${valorInd}\n`);
     });
     console.log(`Valor total de todos os produtos: R$${valorTotal}`);
 }
-
-somarValores();
