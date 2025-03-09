@@ -129,10 +129,16 @@ const somarValores = () => {
 const comandos = {
     'add': adicionarProduto,
     'remove': deleteProduct,
+    'increase': aumentarQuantidade,
+    'reduce': diminuirQuantidade,
     'list': listarProdutos,
     'update': atualizarProduto,
     'search': buscarProduct,
     'show': exibirProduto,
+    'listX': listarProdutosAteX,
+    'listV': listarProdutoMaisCaro,
+    'listCat': listarPorCategoria,
+    'sum': somarValores,
     'sair': () => {
         console.log('👋 Encerrando...');
         process.exit();
