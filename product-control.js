@@ -1,4 +1,22 @@
-// Exercicio 1 - Manipulação de Arrays
+const readline = require('readline');
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+// Mensagem inicial
+console.log('Digite algo (ou "sair" para encerrar):');
+
+rl.on('line', (input) => {
+    if (input.toLowerCase() === 'sair') {
+        console.log('Encerrando...');
+        rl.close();
+    } else {
+        console.log(`Você digitou: ${input}`);
+    }
+});
+
 
 let produtos = [{nome: 'Camisa', preco: 70, categoria: "Roupas", qtd: 20}];
 
@@ -106,3 +124,17 @@ const somarValores = () => {
     });
     console.log(`Valor total de todos os produtos: R$${valorTotal}`);
 }
+
+// Mapeamento de comandos
+const comandos = {
+    'add': adicionarProduto,
+    'remove': deleteProduct,
+    'list': listarProdutos,
+    'update': atualizarProduto,
+    'search': buscarProduct,
+    'show': exibirProduto,
+    'sair': () => {
+        console.log('👋 Encerrando...');
+        process.exit();
+    }
+};
