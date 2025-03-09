@@ -125,22 +125,30 @@ const somarValores = () => {
     console.log(`Valor total de todos os produtos: R$${valorTotal}`);
 }
 
-// Mapeamento de comandos
+const mostrarComandos = () => {
+    console.log('Comandos disponíveis:');
+    Object.entries(comandos).forEach( ([comando, detalhes] ) => {
+    console.log(`${comando}: ${detalhes.descricao}`);
+})
+}
+
+// Mapeamento de comandos com descrições
 const comandos = {
-    'add': adicionarProduto,
-    'remove': deleteProduct,
-    'increase': aumentarQuantidade,
-    'reduce': diminuirQuantidade,
-    'list': listarProdutos,
-    'update': atualizarProduto,
-    'search': buscarProduct,
-    'show': exibirProduto,
-    'listX': listarProdutosAteX,
-    'listV': listarProdutoMaisCaro,
-    'listCat': listarPorCategoria,
-    'sum': somarValores,
-    'sair': () => {
-        console.log('👋 Encerrando...');
+    'help' : {descricao: 'Exibe a lista de comandos', funcao: mostrarComandos},
+    'add': { descricao: 'Adiciona um novo produto', funcao: adicionarProduto },
+    'remove': { descricao: 'Remove um produto do estoque', funcao: deleteProduct },
+    'increase': { descricao: 'Aumenta a quantidade de um produto', funcao: aumentarQuantidade },
+    'reduce': { descricao: 'Diminui a quantidade de um produto', funcao: diminuirQuantidade },
+    'list': { descricao: 'Lista todos os produtos', funcao: listarProdutos },
+    'update': { descricao: 'Atualiza as informações de um produto', funcao: atualizarProduto },
+    'search': { descricao: 'Busca um produto específico', funcao: buscarProduct },
+    'show': { descricao: 'Exibe os detalhes de um produto', funcao: exibirProduto },
+    'listX': { descricao: 'Lista produtos até um valor específico', funcao: listarProdutosAteX },
+    'listV': { descricao: 'Exibe o produto mais caro', funcao: listarProdutoMaisCaro },
+    'listCat': { descricao: 'Lista produtos por categoria', funcao: listarPorCategoria },
+    'sum': { descricao: 'Exibe a soma total dos valores dos produtos', funcao: somarValores },
+    'sair': { descricao: 'Encerra o programa', funcao: () => {
+        console.log('Encerrando...');
         process.exit();
-    }
+    }}
 };
