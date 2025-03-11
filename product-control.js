@@ -6,7 +6,7 @@ const rl = readline.createInterface({
 });
 
 // Mensagem
-console.log('Digite algo (ou "sair" para encerrar):');
+console.log('Digite help para ver os comandos (ou "sair" para encerrar):');
 
 rl.on('line', (input) => {
     if (input.toLowerCase() === 'sair') {
@@ -14,6 +14,11 @@ rl.on('line', (input) => {
         rl.close();
     } else {
         console.log(`Você digitou: ${input}`);
+        switch(input){
+            case 'help':
+            mostrarComandos();
+            break;
+        }
     }
 });
 
@@ -152,3 +157,4 @@ const comandos = {
         process.exit();
     }}
 };
+
