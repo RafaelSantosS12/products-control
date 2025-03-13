@@ -5,7 +5,7 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-// Mensagem
+// Mensagem inicial
 console.log('Digite help para ver os comandos (ou "sair" para encerrar):');
 
 rl.on('line', (input) => {
