@@ -5,7 +5,7 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-// Mensagem inicial
+// Interação com o Usuário
 console.log('Digite help para ver os comandos (ou "sair" para encerrar):');
 
 rl.on('line', (input) => {
@@ -28,9 +28,10 @@ rl.on('line', (input) => {
     }
 });
 
-
+// Array de produtos
 let produtos = [{nome: 'Camisa', preco: 70, categoria: "Roupas", qtd: 20}];
 
+// Functions
 const adicionarProduto = (nomeProd, precoProd, categoriaProd, qtdProd) => {
     produtos.push({
         nome: nomeProd,
