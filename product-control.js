@@ -9,16 +9,20 @@ const rl = readline.createInterface({
 console.log('Digite help para ver os comandos (ou "sair" para encerrar):');
 
 rl.on('line', (input) => {
+    const [comando, ...args] = input.split(' '); 
+
     if (input.toLowerCase() === 'sair') {
         console.log('Encerrando...');
         rl.close();
-    } else {
-        console.log(`Você digitou: ${input}`);
-        switch(input){
-            case 'help':
-            mostrarComandos();
-            break;
-        }
+        return;
+    }
+
+    const cmd = comandos[comando];
+
+    if(cmd) {
+        cmd.funcao(...args);
+    }else{
+        console.log(`Comando "${comando}" não reconhecido. Digite help para ver a lista de comandos.`)
     }
 });
 
@@ -76,7 +80,7 @@ const exibirProduto = (nomeProd) => {
     console.log(`Produto: ${product.nome} \nPreço: ${product.preco}\nCategoria: ${product.categoria}\nQuantidade: ${product.qtd}\n`);
 }
 
-const listarProdutos = (produtos) => {
+const listarProdutos = () => {
     console.log('----- LISTA DE PRODUTOS -----');
     produtos.forEach((produto) => {
         exibirProduto(produto.nome);
@@ -131,7 +135,7 @@ const somarValores = () => {
 }
 
 const mostrarComandos = () => {
-    console.log('Comandos disponíveis:');
+    console.log('\nComandos disponíveis:\n');
     Object.entries(comandos).forEach( ([comando, detalhes] ) => {
     console.log(`${comando}: ${detalhes.descricao}`);
 })
