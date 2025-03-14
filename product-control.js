@@ -151,19 +151,19 @@ const mostrarComandos = () => {
 
 // Mapeamento de comandos com descrições
 const comandos = {
-    'help' : {descricao: 'Exibe a lista de comandos', funcao: mostrarComandos}, //ok
-    'add': { descricao: 'Adiciona um novo produto', funcao: adicionarProduto }, //ok 
-    'remove': { descricao: 'Remove um produto do estoque', funcao: deleteProduct }, //ok
-    'increase': { descricao: 'Aumenta a quantidade de um produto', funcao: aumentarQuantidade },//ok
-    'reduce': { descricao: 'Diminui a quantidade de um produto', funcao: diminuirQuantidade },//ok
-    'list': { descricao: 'Lista todos os produtos', funcao: listarProdutos }, //ok
+    'help' : {descricao: 'Exibe a lista de comandos', funcao: mostrarComandos}, 
+    'add': { descricao: 'Adiciona um novo produto', funcao: adicionarProduto },  
+    'remove': { descricao: 'Remove um produto do estoque', funcao: deleteProduct }, 
+    'increase': { descricao: 'Aumenta a quantidade de um produto', funcao: aumentarQuantidade },
+    'reduce': { descricao: 'Diminui a quantidade de um produto', funcao: diminuirQuantidade },
+    'list': { descricao: 'Lista todos os produtos', funcao: listarProdutos }, 
     'update': { descricao: 'Atualiza as informações de um produto', funcao: atualizarProduto },
-    'search': { descricao: 'Busca um produto específico', funcao: exibirProduto }, //ok
-    'listX': { descricao: 'Lista produtos até um valor específico', funcao: listarProdutosAteX }, //ok
-    'listV': { descricao: 'Exibe o produto mais caro', funcao: listarProdutoMaisCaro }, //ok
-    'listCat': { descricao: 'Lista produtos por categoria', funcao: listarPorCategoria }, //ok
-    'sum': { descricao: 'Exibe a soma total dos valores dos produtos', funcao: somarValores }, //ok
-    'sair': { descricao: 'Encerra o programa', funcao: () => { //ok
+    'search': { descricao: 'Busca um produto específico', funcao: exibirProduto }, 
+    'listX': { descricao: 'Lista produtos até um valor específico', funcao: listarProdutosAteX }, 
+    'listV': { descricao: 'Exibe o produto mais caro', funcao: listarProdutoMaisCaro }, 
+    'listCat': { descricao: 'Lista produtos por categoria', funcao: listarPorCategoria }, 
+    'sum': { descricao: 'Exibe a soma total dos valores dos produtos', funcao: somarValores },
+    'sair': { descricao: 'Encerra o programa', funcao: () => {
         console.log('Encerrando...');
         process.exit();
     }}
