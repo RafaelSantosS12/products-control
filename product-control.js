@@ -11,6 +11,8 @@ console.log('Digite help para ver os comandos (ou "sair" para encerrar):');
 rl.on('line', (input) => {
     const [comando, ...args] = input.split(' '); 
 
+    console.log(`$${input}\n`);
+
     if (input.toLowerCase() === 'sair') {
         console.log('Encerrando...');
         rl.close();
@@ -32,10 +34,11 @@ let produtos = [{nome: 'Camisa', preco: 70, categoria: "Roupas", qtd: 20}];
 const adicionarProduto = (nomeProd, precoProd, categoriaProd, qtdProd) => {
     produtos.push({
         nome: nomeProd,
-        preco: precoProd,
+        preco: parseFloat(precoProd),
         categoria: categoriaProd,
-        qtd: qtdProd
+        qtd: parseInt(qtdProd)
     });
+    console.log(`Produto ${nomeProd} adicionado com sucesso!\n`);
 }
 
 const atualizarProduto = (nomeProd, atributo, valorAtribuir) => {
@@ -46,7 +49,7 @@ const atualizarProduto = (nomeProd, atributo, valorAtribuir) => {
 }
 
 const buscarProduct = (nomeProd) => {
-    product = produtos.find(produto => produto.nome === nomeProd);
+    product = produtos.find(produto => produto.nome.toLowerCase() === nomeProd.toLowerCase());
 
     if(product) {
         console.log(`Produto: ${product.nome} \nPreço: ${product.preco}\nCategoria: ${product.categoria}\nQuantidade: ${product.qtd}\n`);
@@ -76,20 +79,21 @@ const diminuirQuantidade = (nomeProd, qtd) => {
 }
 
 const exibirProduto = (nomeProd) => {
-    const product = produtos.find(produto => produto.nome === nomeProd);
+    const product = produtos.find(produto => produto.nome.toLowerCase() === nomeProd.toLowerCase());
     console.log(`Produto: ${product.nome} \nPreço: ${product.preco}\nCategoria: ${product.categoria}\nQuantidade: ${product.qtd}\n`);
 }
 
-const listarProdutos = () => {
+const listarProdutos = (lista = produtos) => {
     console.log('----- LISTA DE PRODUTOS -----');
-    produtos.forEach((produto) => {
+    lista.forEach((produto) => {
         exibirProduto(produto.nome);
     });
     console.log('-----------------------------');
 }
 
 const listarProdutosAteX = (x) => {
-    const produtosAteX = produtos.filter((produto) => produto.preco <= x);
+    const valorLimite = parseFloat(x);
+    const produtosAteX = produtos.filter((produto) => produto.preco <= valorLimite);
     listarProdutos(produtosAteX);
 }
 
@@ -107,7 +111,7 @@ const listarProdutoMaisCaro = () => {
         }
     }, produtos[0]);
 
-    console.log(`Produto mais caro: ${produtoMaisCaro.nome}`);
+    console.log(`Produto mais caro: ${produtoMaisCaro.nome}\nValor: ${produtoMaisCaro.preco}`);
 }
 
 const deleteProduct = (nomeProd) => {
@@ -115,7 +119,7 @@ const deleteProduct = (nomeProd) => {
 
     if(produtoRemovido){
         produtos = produtos.filter(produto => produto.nome !== nomeProd);
-        console.log(`Produto removido: ${produtoRemovido.nome}`);
+        console.log(`Produto removido: ${produtoRemovido.nome}\n`);
         listarProdutos(produtos);
     }else{
         console.log("Produto não encontrado!");
@@ -129,9 +133,9 @@ const somarValores = () => {
         let valorInd = produto.preco * produto.qtd;
         valorTotal += valorInd;
         exibirProduto(produto.nome);
-        console.log(`Valor total do produto: ${valorInd}\n`);
+        console.log(`Valor total de ${produto.nome}s: ${valorInd}\n`);
     });
-    console.log(`Valor total de todos os produtos: R$${valorTotal}`);
+    console.log(`Valor total dos produtos: R$${valorTotal}`);
 }
 
 const mostrarComandos = () => {
@@ -143,20 +147,19 @@ const mostrarComandos = () => {
 
 // Mapeamento de comandos com descrições
 const comandos = {
-    'help' : {descricao: 'Exibe a lista de comandos', funcao: mostrarComandos},
-    'add': { descricao: 'Adiciona um novo produto', funcao: adicionarProduto },
-    'remove': { descricao: 'Remove um produto do estoque', funcao: deleteProduct },
+    'help' : {descricao: 'Exibe a lista de comandos', funcao: mostrarComandos}, //ok
+    'add': { descricao: 'Adiciona um novo produto', funcao: adicionarProduto }, //ok 
+    'remove': { descricao: 'Remove um produto do estoque', funcao: deleteProduct }, //ok
     'increase': { descricao: 'Aumenta a quantidade de um produto', funcao: aumentarQuantidade },
     'reduce': { descricao: 'Diminui a quantidade de um produto', funcao: diminuirQuantidade },
-    'list': { descricao: 'Lista todos os produtos', funcao: listarProdutos },
+    'list': { descricao: 'Lista todos os produtos', funcao: listarProdutos }, //ok
     'update': { descricao: 'Atualiza as informações de um produto', funcao: atualizarProduto },
-    'search': { descricao: 'Busca um produto específico', funcao: buscarProduct },
-    'show': { descricao: 'Exibe os detalhes de um produto', funcao: exibirProduto },
+    'search': { descricao: 'Busca um produto específico', funcao: exibirProduto }, //ok
     'listX': { descricao: 'Lista produtos até um valor específico', funcao: listarProdutosAteX },
-    'listV': { descricao: 'Exibe o produto mais caro', funcao: listarProdutoMaisCaro },
-    'listCat': { descricao: 'Lista produtos por categoria', funcao: listarPorCategoria },
-    'sum': { descricao: 'Exibe a soma total dos valores dos produtos', funcao: somarValores },
-    'sair': { descricao: 'Encerra o programa', funcao: () => {
+    'listV': { descricao: 'Exibe o produto mais caro', funcao: listarProdutoMaisCaro }, //ok
+    'listCat': { descricao: 'Lista produtos por categoria', funcao: listarPorCategoria }, 
+    'sum': { descricao: 'Exibe a soma total dos valores dos produtos', funcao: somarValores }, //ok
+    'sair': { descricao: 'Encerra o programa', funcao: () => { //ok
         console.log('Encerrando...');
         process.exit();
     }}
