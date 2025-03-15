@@ -6,7 +6,8 @@ const rl = readline.createInterface({
 });
 
 // Interação com o Usuário
-console.log('Digite help para ver os comandos (ou "sair" para encerrar):');
+console.log('------- CONTROLE DE PRODUTOS -------');
+console.log('Digite help para ver os comandos \n(ou "sair" para encerrar):');
 
 rl.on('line', (input) => {
     const [comando, ...args] = input.split(' '); 
@@ -40,6 +41,7 @@ const adicionarProduto = (nomeProd, precoProd, categoriaProd, qtdProd) => {
         qtd: parseInt(qtdProd)
     });
     console.log(`Produto ${nomeProd} adicionado com sucesso!\n`);
+    listarProdutos(produtos);
 }
 
 const atualizarProduto = (nomeProd, atributo, valorAtribuir) => {
@@ -85,7 +87,7 @@ const diminuirQuantidade = (nomeProd, qtd) => {
 
 const exibirProduto = (nomeProd) => {
     const product = produtos.find(produto => produto.nome.toLowerCase() === nomeProd.toLowerCase());
-    console.log(`Produto: ${product.nome} \nPreço: ${product.preco}\nCategoria: ${product.categoria}\nQuantidade: ${product.qtd}\n`);
+    console.log(`[ ${product.nome} ]\nPreço: R$ ${product.preco}\nCategoria: ${product.categoria}\nQuantidade: ${product.qtd}\n`);
 }
 
 const listarProdutos = (lista = produtos) => {
@@ -99,11 +101,13 @@ const listarProdutos = (lista = produtos) => {
 const listarProdutosAteX = (x) => {
     const valorLimite = parseFloat(x);
     const produtosAteX = produtos.filter((produto) => produto.preco <= valorLimite);
+    console.log(`Listando produtos com preço até ${valorLimite}`);
     listarProdutos(produtosAteX);
 }
 
 const listarPorCategoria = (category) => {
     const produtosCategoriaX = produtos.filter((produto) => produto.categoria.toLowerCase() == category.toLowerCase());
+    console.log(`Listando produtos da categoria ${category}`);
     listarProdutos(produtosCategoriaX);
 }
 
@@ -148,6 +152,7 @@ const mostrarComandos = () => {
     Object.entries(comandos).forEach( ([comando, detalhes] ) => {
     console.log(`${comando} => ${detalhes.descricao}`);
 })
+    console.log("\n");
 }
 
 // Mapeamento de comandos com descrições
