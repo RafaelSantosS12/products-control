@@ -155,7 +155,7 @@ const mostrarComandos = () => {
     console.log("\n");
 }
 
-// Mapeamento de comandos com descrições
+// Mapeamento de comandos com descrições e exemplos
 const comandos = {
     'help' : {descricao: 'Exibe a lista de comandos', funcao: mostrarComandos}, 
     'add': { descricao: 'Adiciona um novo produto [Ex: "add Camisa 100 Roupas 1"] (Nome, Preço, Categoria, Quantidade)', funcao: adicionarProduto },  
