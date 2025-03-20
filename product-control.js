@@ -152,7 +152,7 @@ const mostrarComandos = () => {
     Object.entries(comandos).forEach( ([comando, detalhes] ) => {
     console.log(`${comando} => ${detalhes.descricao}`);
 })
-    console.log("\n");
+    console.log("\n ");
 }
 
 // Mapeamento de comandos com descrições e exemplos
